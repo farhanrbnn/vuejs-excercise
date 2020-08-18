@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue exercise</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+	<div id="root">
+		<h1>
+			{{greeting}}
+		</h1>
+		<input v-model="greeting">
+	</div>
+	<div id="app2">
+		<div v-if="count ===1">
+			green
+		</div>
+		<div v-if="count === 2">
+			red
+		</div>
+		<div v-else>
+			orange
+		</div>
+	</div>
+	<div id="app3">
+		<input v-model="newCat" v-on:keyup.enter="addCat">
+		<button v-on:click="addCat"> ADD </button>
+		<ul>
+			<li v-for="cat in cats">{{ cat }}</li>
+		</ul>
+		<ul>
+			<li v-for="object in objects">{{ object.name }}</li>
+		</ul>
+		<cat-list :cats="cats">
+	</div>
+</body>
+</html>
