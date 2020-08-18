@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <headerApp />
-    <questionBox />
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <questionBox />          
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -9,12 +15,19 @@
 import questionBox from './components/questionBox.vue'
 import headerApp from './components/headerApp.vue'
 
-
 export default {
   name: 'App',
   components: {
     questionBox,
     headerApp
+  }, 
+  mounted: function(){
+    fetch('https://opentdb.com/api.php?amount=5&category=27&type=multiple',{
+      method: 'get'
+    }).then((response)=> {
+      console.log(response.json())
+
+    })
   }
 }
 </script>
@@ -26,6 +39,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 5px;
 }
 </style>

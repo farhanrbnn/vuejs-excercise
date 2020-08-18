@@ -1,8 +1,18 @@
 <template>
 	<div>
 		<b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for vue.js 2">
-		<p> For more information visit website </p>
-		<b-button variant="primary" href="#">more infor</b-button>
+    <template v-slot:lead>
+      some question here
+    </template>
+
+    <hr class="my-4">
+
+    <p>
+      List of answers
+    </p>
+
+    <b-button variant="primary" href="#">Submit</b-button>
+    <b-button variant="success" href="#">Next</b-button>
 		</b-jumbotron>
 	</div>
 </template>
