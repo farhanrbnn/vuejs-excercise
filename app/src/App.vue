@@ -4,7 +4,11 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
-          <questionBox />          
+          <questionBox 
+          v-if="questions.length"
+          v-bind:currentQuestion="questions[index]"
+          v-bind:next="next"
+          />          
         </b-col>
       </b-row>
     </b-container>
@@ -21,11 +25,28 @@ export default {
     questionBox,
     headerApp
   }, 
+  data() {
+    return {
+      questions: [],
+      index: 0
+    }
+  },
+  methods: {
+    next() {
+      this.index++
+
+    }
+  },
   mounted: function(){
-    fetch('https://opentdb.com/api.php?amount=5&category=27&type=multiple',{
+    fetch('https://opentdb.com/api.php?amount=10&category=27&type=multiple',{
       method: 'get'
-    }).then((response)=> {
-      console.log(response.json())
+    })
+    .then((response)=> {
+      return response.json()
+
+    })
+    .then((jsonData) => {
+      this.questions = jsonData.results
 
     })
   }
